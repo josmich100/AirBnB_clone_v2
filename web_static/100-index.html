@@ -1,195 +1,273 @@
 <!DOCTYPE html>
-<html lang="en">
-	<head>
-		<title>AirBnB clone</title>
+<html>
 
-		<link rel="shortcut icon" href="images/icon.ico" >
+<head>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>AirBnb Clone</title>
+  <link rel="stylesheet" href="styles/4-common.css">
+  <link rel="stylesheet" href="styles/3-header.css">
+  <link rel="stylesheet" href="styles/3-footer.css">
+  <link rel="stylesheet" href="styles/6-filters.css">
+  <link rel="stylesheet" href="styles/100-places.css">
+  <link rel="icon" href="images/icon.png">
+</head>
 
-		<link rel="stylesheet" href="styles/4-common.css"/>
-		<link rel="stylesheet" href="styles/3-header.css"/>
-		<link rel="stylesheet" href="styles/3-footer.css"/>
-		<link rel="stylesheet" href="styles/6-filters.css"/>
-		<link rel="stylesheet" href="styles/100-places.css"/>
-	</head>
-    <body>
-		<header>
-			<div id="header_logo"></div>
-		</header>
-		<div class="container">
-			<section class="filters">
-				<button>Search</button>
-				<div class="locations">
-					<h3>States</h3>
-					<h4>California, Arizona...</h4>
-					<ul class="popover">
-						<li><h2>Arizona</h2>
-							<ul>
-								<li><h4>Page</h4></li>
-								<li><h4>Page2</h4></li>
-							</ul></li>
-						<li><h2>California</h2>
-							<ul>
-								<li><h4>San Francisco</h4></li>
-								<li><h4>Los Altos</h4></li>
-							</ul></li>
-					</ul>
-				</div>
-				<div class="filter_amenities">
-					<h3>Amenities</h3>
-					<h4>Internet, Kitchen...</h4>
-					<ul class="popover">
-						<li><h4>Internet</h4></li>
-						<li><h4>TV</h4></li>
-						<li><h4>Kitchen</h4></li>
-						<li><h4>Iron</h4></li>
-					</ul>
-				</div>
+<body>
+  <header>
+  </header>
 
-			</section>
-			<section class="places">
-				<h1>Places</h1>
-				<article>
-					<div class="headline">
-						<h2 class="article_title">My home</h2>
-						<div class="price_by_night">$80</div>
-					</div>
-					<div class="information">
-						<div class="max_guest">
-							<div class="guest_icon"></div>
-							<p>2 Guests</p>
-						</div>
-						<div class="number_rooms">
-							<div class="bed_icon"></div>
-							<p>1 Bedroom</p>
-						</div>
-						 <div class="number_bathrooms">
-							<div class="bath_icon"></div>
-							<p>1 Bathroom</p>
-						</div>
-					</div>
-					<div class="user"><b>Owner</b>: John Lennon</div>
-					<div class="description">
-                        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.
-                    </div>
-					<div class="amenities">
-						<h2 class="article_subtitle">Amenities</h2>
-						<ul>
-							<li><div class="tv_icon"></div>TV</li>
-							<li><div class="wifi_icon"></div>Wifi</li>
-							<li><div class="pet_icon"></div>Pet friendly</li>
-						</ul>
-					</div>
-					<div class="reviews">
-						<h2 class="article_subtitle">Reviews</h2>
-						<ul>
-							<li>
-								<div class="review_item">
-									<h3>From Bob Dylan the 27th January 2017</h3>
-									<p class="review_text">Wow, what can I say?! I'm a real rolling stone, you may have heard, but - by golly - I'd just as well settle down in this humble home, if you'd part with it - course, I'm sure you wouldn't. Real shame too. Oh well...</p>
-								</div>
-							</li>
-							<li>
-								<div class="review_item">
-									<h3>From Justin Majetich the 28th April 1991</h3>
-									<p class="review_text">I was birthed in this here bathtub today!</p>
-								</div>
-							</li>
-						</ul>
-					</div>
-				</article>
-				<article>
-					<div class="headline">
-						<h2 class="article_title">Tiny house</h2>
-						<div class="price_by_night">$65</div>
-					</div>
-					<div class="information">
-                        <div class="max_guest">
-                            <div class="guest_icon"></div>
-                            <p>4 Guests</p>
-                        </div>
-                        <div class="number_rooms">
-                            <div class="bed_icon"></div>
-                            <p>2 Bedroom</p>
-                        </div>
-                         <div class="number_bathrooms">
-                            <div class="bath_icon"></div>
-                            <p>1 Bathroom</p>
-                        </div>
-                    </div>
-					<div class="user"><b>Owner</b>: Adrienne</div>
-					<div class="description">
-                        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
-                    </div>
-					<div class="amenities">
-                        <h2 class="article_subtitle">Amenities</h2>
-                        <ul>
-                            <li><div class="tv_icon"></div>TV</li>
-                            <li><div class="wifi_icon"></div>Wifi</li>
-                        </ul>
-                    </div>
-                    <div class="reviews">
-                        <h2 class="article_subtitle">Reviews</h2>
-                        <ul>
-                            <li>
-								<div class="review_item">
-                                	<h3>From Bilbo Baggins the 6th June 2089</h3>
-                                	<p class="review_text">The place was spotless, and Adrienne was an excellent host, leaving fresh biscuits out for my ravenous arrival.</p>
-								</div>
-                            </li>
-                        </ul>
-                    </div>
-				</article>
-				<article>
-					<div class="headline">
-						<h2 class="article_title">A suite</h2>
-						<div class="price_by_night">$180</div>
-					</div>
-					<div class="information">
-                        <div class="max_guest">
-                            <div class="guest_icon"></div>
-                            <p>5 Guests</p>
-                        </div>
-                        <div class="number_rooms">
-                            <div class="bed_icon"></div>
-                            <p>3 Bedroom</p>
-                        </div>
-                         <div class="number_bathrooms">
-                            <div class="bath_icon"></div>
-                            <p>2 Bathroom</p>
-                        </div>
-                    </div>
-					<div class="user"><b>Owner</b>: Betty Holberton</div>
-					<div class="description">
-						Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
-					</div>
-					<div class="amenities">
-                        <h2 class="article_subtitle">Amenities</h2>
-                        <ul>
-                            <li><div class="pet_icon"></div>Pet friendly</li>
-                        </ul>
-                    </div>
-                    <div class="reviews">
-                        <h2 class="article_subtitle">Reviews</h2>
-                        <ul>
-                            <li>
-								<div class="review_item">
-                                	<h3>From Beyonce Knowles the 16th September 2013</h3>
-                                	<p class="review_text">Betty was a sweetheart. Jay, I and the kids thoroughly enjoyed out stay.</p>
-								</div>
-                            </li>
-                            <li>
-								<div class="review_item">
-                                	<h3>From Julien Barbier the 1th August 2008</h3>
-                                	<p class="review_text">What a beautiful home! I had one of the best night's sleeps of my life and woke up with an idea!</p>
-								</div>
-                            </li>
-                        </ul>
-                    </div>
-				</article>
-			</section>
-		</div>
-		<footer>
-			<p>Holberton School</p>
-		</footer>
-	</body>
+  <div class="container">
+
+    <section class="filters">
+
+      <div class="locations">
+        <h3>States</h3>
+        <h4>California, Arizona,...</h4>
+        <ul class="popover">
+          <li>
+            <h2>Carlifornia</h2>
+            <ul>
+              <li>City 1</li>
+              <li>City 2</li>
+            </ul>
+          </li>
+          <li>
+            <h2>Arizona</h2>
+            <ul>
+              <li>City 1</li>
+              <li>City 2</li>
+            </ul>
+          </li>
+        </ul>
+      </div>
+
+      <div class="amenities">
+        <h3>Amenities</h3>
+        <h4>Internet, Kitchen,...</h4>
+        <ul class="popover">
+          <li>
+            <h2>Interner</h2>
+            <ul>
+              <li>Cables</li>
+              <li>Router</li>
+            </ul>
+          </li>
+          <li>
+            <h2>Kitchen</h2>
+            <ul>
+              <li>Utensils</li>
+              <li>Cooker</li>
+            </ul>
+          </li>
+        </ul>
+
+      </div>
+
+      <button>Search</button>
+    </section>
+
+    <section class="places">
+      <h1>Places</h1>
+
+      <article>
+        <div class="place_title">
+          <h2>My House</h2>
+          <div class="price_by_night">
+            <span>
+              $80
+            </span>
+          </div>
+        </div>
+
+        <div class="information">
+          <div class="max_guest">
+            2 Guests
+          </div>
+          <div class="number_rooms">
+            2 bedroom
+          </div>
+          <div class="number_bathrooms">
+            1 bathroom
+          </div>
+        </div>
+
+        <div class="user">
+          <b>Owner:</b> John Lennon
+        </div>
+
+        <div class="description">
+          <p>
+            This a beautiful 2 bedroom house with 2 big and comfy beds. It is in the green neighbourhood of the Yako
+            estate, in Hapo city.
+          </p>
+        </div>
+
+        <div class="amenities">
+          <h2>Amenities</h2>
+          <ul>
+            <li class="tv">
+              <span>TV</span>
+            </li>
+            <li class="wifi">
+              <span>WiFi</span>
+            </li>
+            <li class="pets">
+              <span>Pets Friendly</span>
+            </li>
+          </ul>
+        </div>
+
+        <div class="reviews">
+          <h2>Reviews</h2>
+          <ul>
+            <li>
+              <h3>From Joe Mumbo 12/04/2023</h3>
+              <p>
+                I liked how clean the place was. Keep it up
+              </p>
+            </li>
+            <li>
+              <h3>From Glen Walker 22/08/2021</h3>
+              <p>
+                Highly recommend
+              </p>
+            </li>
+          </ul>
+        </div>
+
+      </article>
+
+      <article>
+        <div class="place_title">
+          <h2>Tiny House</h2>
+          <div class="price_by_night">
+            <span>
+              $70
+            </span>
+          </div>
+        </div>
+
+        <div class="information">
+          <div class="max_guest">
+            2 Guests
+          </div>
+          <div class="number_rooms">
+            1 bedroom
+          </div>
+          <div class="number_bathrooms">
+            1 bathroom
+          </div>
+        </div>
+
+        <div class="user">
+          <b>Owner:</b> Jude Mitchel
+        </div>
+
+        <div class="description">
+          <p>
+            This house is perfect for a couple looking to get a good place to relax together. The bedroom windows expose
+            a beatiful view of the sea from which you can soak in the setting sun in the evening. The house is located
+            in Miano Town on Yimbo road.
+          </p>
+        </div>
+
+        <div class="amenities">
+          <h2>Amenities</h2>
+          <ul>
+            <li class="tv">
+              <span>TV</span>
+            </li>
+          </ul>
+        </div>
+
+        <div class="reviews">
+          <h2>Reviews</h2>
+          <ul>
+            <li>
+              <h3>From Vin and Jack 12/04/2023</h3>
+              <p>
+                Too squeezed. Badly kept and in a very noisy place.
+              </p>
+            </li>
+          </ul>
+        </div>
+
+      </article>
+
+      <article>
+        <div class="place_title">
+          <h2>A Suite</h2>
+          <div class="price_by_night">
+            <span>
+              $80
+            </span>
+          </div>
+        </div>
+
+        <div class="information">
+          <div class="max_guest">
+            5 Guests
+          </div>
+          <div class="number_rooms">
+            3 bedrooms
+          </div>
+          <div class="number_bathrooms">
+            2 bathrooms
+          </div>
+        </div>
+
+        <div class="user">
+          <b>Owner:</b> Tango Properties
+        </div>
+
+        <div class="description">
+          <p>
+            A spacious 3 bedroom mansion, ideal for a luxurious getaway destination. Ideal for a family setting. Each
+            family member will have their space while on vacation. Find us on Donge estate, #15
+          </p>
+        </div>
+
+        <div class="amenities">
+          <h2>Amenities</h2>
+          <ul>
+            <li class="tv">
+              <span>TV</span>
+            </li>
+            <li class="wifi">
+              <span>WiFi</span>
+            </li>
+            <li class="pets">
+              <span>Pets Friendly</span>
+            </li>
+          </ul>
+        </div>
+
+        <div class="reviews">
+          <h2>Reviews</h2>
+          <ul>
+            <li>
+              <h3>From The Johnsons 12/04/2023</h3>
+              <p>
+                Really spacious. Very good security. However, we had water issues. Hope they solve that
+              </p>
+            </li>
+            <li>
+              <h3>From The Mansons 22/08/2021</h3>
+              <p>
+                Would love to go back there soon. Very family friendly setting
+              </p>
+            </li>
+          </ul>
+        </div>
+
+      </article>
+
+    </section>
+  </div>
+
+  <footer>
+    Best School
+  </footer>
+</body>
+
 </html>
