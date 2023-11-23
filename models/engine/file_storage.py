@@ -9,7 +9,6 @@ from models.review import Review
 from models.state import State
 from models.user import User
 
-
 class FileStorage:
     """Represent an abstracted storage engine.
 
@@ -28,22 +27,20 @@ class FileStorage:
         Otherwise, returns the __objects dictionary.
         """
         if cls is not None:
-            if type(cls) == str:
-                cls = eval(cls)
-            cls_dict = {}
-            for k, v in self.__objects.items():
-                if type(v) == cls:
-                    cls_dict[k] = v
+            # Use isinstance for type checking
+            cls = eval(cls) if isinstance(cls, str) else cls
+            cls_dict = {k: v for k, v in self.__objects.items() if isinstance(v, cls)}
             return cls_dict
         return self.__objects
 
     def new(self, obj):
         """Set in __objects obj with key <obj_class_name>.id."""
-        self.__objects["{}.{}".format(type(obj).__name__, obj.id)] = obj
+        key = "{}.{}".format(type(obj).__name__, obj.id)
+        self.__objects[key] = obj
 
     def save(self):
         """Serialize __objects to the JSON file __file_path."""
-        odict = {o: self.__objects[o].to_dict() for o in self.__objects.keys()}
+        odict = {key: obj.to_dict() for key, obj in self.__objects.items()}
         with open(self.__file_path, "w", encoding="utf-8") as f:
             json.dump(odict, f)
 
@@ -51,19 +48,16 @@ class FileStorage:
         """Deserialize the JSON file __file_path to __objects, if it exists."""
         try:
             with open(self.__file_path, "r", encoding="utf-8") as f:
-                for o in json.load(f).values():
-                    name = o["__class__"]
-                    del o["__class__"]
-                    self.new(eval(name)(**o))
+                # Use dict comprehension to simplify code
+                self.__objects = {key: eval(obj['__class__'])(**obj) for key, obj in json.load(f).items()}
         except FileNotFoundError:
             pass
 
     def delete(self, obj=None):
         """Delete a given object from __objects, if it exists."""
-        try:
-            del self.__objects["{}.{}".format(type(obj).__name__, obj.id)]
-        except (AttributeError, KeyError):
-            pass
+        key = "{}.{}".format(type(obj).__name__, obj.id) if obj else None
+        # Use dict.pop method to safely remove the key
+        self.__objects.pop(key, None)
 
     def close(self):
         """Call the reload method."""
