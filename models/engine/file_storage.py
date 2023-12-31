@@ -1,77 +1,68 @@
 #!/usr/bin/python3
-"""
-This module handles file storage functions
-"""
-
-
+"""Defines the FileStorage class."""
 import json
-import importlib
+from models.base_model import BaseModel
+from models.amenity import Amenity
+from models.city import City
+from models.place import Place
+from models.review import Review
+from models.state import State
+from models.user import User
 
 
 class FileStorage:
-    """
-    This class handles serialization and deserialization of objects
-        to/from a JSON file.
+    """Represent an abstracted storage engine.
+
+    Attributes:
+        __file_path (str): The name of the file to save objects to.
+        __objects (dict): A dictionary of instantiated objects.
     """
 
     __file_path = "file.json"
     __objects = {}
 
-    def classes(self):
-        """Returns a dictionary of valid classes and their references"""
-        from models.base_model import BaseModel
-        from models.user import User
-        from models.state import State
-        from models.city import City
-        from models.amenity import Amenity
-        from models.place import Place
-        from models.review import Review
+    def all(self, cls=None):
+        """Return a dictionary of instantiated objects in __objects.
 
-        classes = {"BaseModel": BaseModel,
-                   "User": User,
-                   "State": State,
-                   "City": City,
-                   "Amenity": Amenity,
-                   "Place": Place,
-                   "Review": Review}
-        return classes
-
-    def all(self):
-        """Returns the dictionary of all stored objects."""
-        return FileStorage.__objects
+        If a cls is specified, returns a dictionary of objects of that type.
+        Otherwise, returns the __objects dictionary.
+        """
+        if cls is not None:
+            if isinstance(cls, str):
+                cls = eval(cls)
+            cls_dict = {k: v for k, v in self.__objects.items()
+                        if isinstance(v, cls)}
+            return cls_dict
+        return self.__objects
 
     def new(self, obj):
-        """
-        Adds an object to the internal dictionary.
-
-        Args:
-            obj: The object to add.
-        """
-        key = "{}.{}".format(obj.__class__.__name__, obj.id)
-        self.__objects[key] = obj
+        """Set in __objects obj with key <obj_class_name>.id."""
+        self.__objects[f"{type(obj).__name__}.{obj.id}"] = obj
 
     def save(self):
-        """Serializes and saves the dictionary of objects to a JSON file."""
-        data = {key: obj.to_dict() for key, obj in self.__objects.items()}
-        with open(self.__file_path, 'w') as file:
-            json.dump(data, file)
+        """Serialize __objects to the JSON file __file_path."""
+        odict = {o: self.__objects[o].to_dict() for o in self.__objects.keys()}
+        with open(self.__file_path, "w", encoding="utf-8") as f:
+            json.dump(odict, f)
 
     def reload(self):
-        """Deserializes and loads objects from the JSON file."""
+        """Deserialize the JSON file __file_path to __objects, if it exists."""
         try:
-            with open(self.__file_path, 'r') as file:
-                data = json.load(file)
-            for key, obj in data.items():
-                self.__objects[key] = self.classes()[obj["__class__"]](**obj)
+            with open(self.__file_path, "r", encoding="utf-8") as f:
+                for o in json.load(f).values():
+                    name = o["__class__"]
+                    del o["__class__"]
+                    self.new(eval(name)(**o))
         except FileNotFoundError:
             pass
 
     def delete(self, obj=None):
         """Delete a given object from __objects, if it exists."""
-        key = "{}.{}".format(type(obj).__name__, obj.id) if obj else None
-        # Use dict.pop method to safely remove the key
-        self.__objects.pop(key, None)
+        try:
+            del self.__objects[f"{type(obj).__name__}.{obj.id}"]
+        except (AttributeError, KeyError):
+            pass
 
     def close(self):
-        """Call the reload method."""
+        """call reload() method for deserializing the JSON file to objects"""
         self.reload()

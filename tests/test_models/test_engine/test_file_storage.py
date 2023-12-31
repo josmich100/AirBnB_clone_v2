@@ -102,14 +102,6 @@ class TestFileStorage(unittest.TestCase):
     def test_all_no_specification(self):
         ''' tests all when no class is passed '''
         return True
-        fs = FileStorage()
-        new_state1 = State()
-        fs.new(new_state1)
-        fs.save()
-        new_user1 = User()
-        fs.new(new_user1)
-        fs.save()
-        self.assertEqual(8, len(fs.all()))
 
     def test_delete_method(self):
         ''' tests delete method '''
@@ -120,6 +112,29 @@ class TestFileStorage(unittest.TestCase):
         self.assertIn(new_state, fs.all(State).values())
         fs.delete(new_state)
         self.assertNotIn(new_state, fs.all(State).values())
+
+    # test base model
+    def test_base_model(self):
+        """
+        test for basemodel
+
+        raises: key error
+        """
+        b1 = BaseModel()
+        b1.name = "Holberton"
+        b1.my_number = 89
+        b1.save()
+        b1_json = b1.to_dict()
+        b2 = BaseModel(**b1_json)
+        self.assertEqual(b2.to_dict(), b1.to_dict())
+        self.assertIsInstance(b2.created_at, datetime.datetime)
+        self.assertIsInstance(b2.updated_at, datetime.datetime)
+        self.assertIsInstance(b2.id, str)
+        self.assertIsInstance(b2.name, str)
+        self.assertIsInstance(b2.my_number, int)
+        self.assertEqual(b2.name, "Holberton")
+        self.assertEqual(b2.my_number, 89)
+        
 
 if __name__ == "__main__":
     unittest.main()
